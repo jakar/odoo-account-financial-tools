@@ -54,4 +54,5 @@ class AccountMove(models.Model):
             self._cr.execute('UPDATE account_move '
                              'SET state=%s '
                              'WHERE id IN %s', ('draft', tuple(self.ids)))
+            self.env.invalidate_all()
         return True
